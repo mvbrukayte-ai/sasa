@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vibe.school — вайб-кодинг на Claude Code. Сайты и сервисы без опыта</title>
+  <meta name="description" content="4-недельный курс по вайб-кодингу на Claude Code. Вы описываете идею словами — ИИ пишет код. Соберите 10+ сайтов, сервисов и ИИ-агентов без опыта программирования.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">К содержанию</a>
+
+  <div class="bg" aria-hidden="true">
+    <div class="aurora aurora--1"></div>
+    <div class="aurora aurora--2"></div>
+    <div class="aurora aurora--3"></div>
+    <div class="aurora aurora--4"></div>
+    <canvas id="field"></canvas>
+    <div class="bg__grid"></div>
+    <div class="bg__noise"></div>
+  </div>
+  <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><span class="progress__bar" id="progressBar"></span></div>
+  <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a class="logo" href="#top" aria-label="vibe.school — на главную">
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M16 2v28M2 16h28M6 6l20 20M26 6 6 26" stroke="url(#logoGrad)" stroke-width="3.2" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="2" y1="2" x2="30" y2="30">
+                <stop stop-color="#a78bfa"/><stop offset=".5" stop-color="#22d3ee"/><stop offset="1" stop-color="#f472b6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="logo__text">vibe<span class="logo__dot">.</span>school</span>
+      </a>
+
+      <nav class="nav" aria-label="Основная навигация">
+        <a class="nav__link" href="#program">Программа</a>
+        <a class="nav__link" href="#projects">Проекты</a>
+        <a class="nav__link" href="#reviews">Отзывы</a>
+        <a class="nav__link" href="#pricing">Тарифы</a>
+        <a class="nav__link" href="#faq">FAQ</a>
+      </nav>
+
+      <div class="header__actions">
+        <a class="header__spots" href="#join"><span class="header__spots-dot"></span>12 мест на поток</a>
+        <a class="btn btn--glow btn--sm magnetic" href="#join">Занять место</a>
+        <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" inert>
+    <nav aria-label="Мобильная навигация">
+      <a href="#program"><span>01</span>Программа</a>
+      <a href="#projects"><span>02</span>Проекты</a>
+      <a href="#reviews"><span>03</span>Отзывы</a>
+      <a href="#pricing"><span>04</span>Тарифы</a>
+      <a href="#faq"><span>05</span>FAQ</a>
+      <a class="btn btn--glow" href="#join">Занять место</a>
+    </nav>
+    <p class="mobile-menu__note">Поток #7 · старт 12 ноября · 12 мест</p>
+  </div>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <div class="badge hero-anim" style="--d:.05s">
+            <span class="badge__pulse"></span>
+            Поток #7 · старт 12 ноября
+            <span class="badge__sep"></span>
+            <span class="badge__accent">осталось 12 мест</span>
+          </div>
+
+          <h1 class="hero__title">
+            <span class="line"><span class="word">Из идеи</span></span>
+            <span class="line"><span class="word">в <em class="grad-text">работающий</em></span></span>
+            <span class="line"><span class="word">продукт</span></span>
+          </h1>
+
+          <p class="hero__lead hero-anim" style="--d:.5s">
+            Курс по вайб-кодингу на <strong>Claude Code</strong>. Вы описываете идею словами —
+            ИИ пишет код, а вы запускаете <strong>сайты, сервисы и ИИ-агентов</strong>.
+            Без опыта программирования.
+          </p>
+
+          <div class="hero__cta hero-anim" style="--d:.62s">
+            <a class="btn btn--glow btn--lg magnetic" href="#join">
+              Хочу на курс
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="btn btn--outline btn--lg" href="#program">Смотреть программу</a>
+          </div>
+
+          <div class="hero__meta hero-anim" style="--d:.74s">
+            <span><b>4 недели</b> обучения</span>
+            <span><b>10+</b> проектов</span>
+            <span><b>12</b> уроков</span>
+            <span><b>∞</b> поддержка в чате</span>
+          </div>
+
+          <div class="hero__social hero-anim" style="--d:.86s">
+            <div class="avatars" aria-hidden="true">
+              <span class="avatar avatar--1">А</span>
+              <span class="avatar avatar--2">М</span>
+              <span class="avatar avatar--3">К</span>
+              <span class="avatar avatar--4">Д</span>
+              <span class="avatar avatar--more">+2k</span>
+            </div>
+            <div class="hero__social-text">
+              <div class="stars" aria-label="Рейтинг 4.9 из 5">★★★★★ <b>4.9</b></div>
+              <p>2 400+ студентов уже собрали свой первый продукт</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__visual">
+          <div class="build hero-anim" style="--d:.45s">
+            <div class="build__glow" aria-hidden="true"></div>
+
+            <div class="browser-wrap tilt">
+              <div class="browser">
+                <div class="browser__bar">
+                  <span class="browser__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="browser__url">coffee.studio</span>
+                  <span class="browser__live"><i></i> live</span>
+                </div>
+                <div class="browser__page">
+                  <div class="mini-nav">
+                    <span class="mini-logo"></span>
+                    <span class="mini-link"></span><span class="mini-link"></span><span class="mini-link"></span>
+                    <span class="mini-btn"></span>
+                  </div>
+                  <div class="mini-hero">
+                    <span class="mini-eyebrow">specialty coffee · moscow</span>
+                    <span class="mini-h1"></span>
+                    <span class="mini-h1 mini-h1--short"></span>
+                    <span class="mini-p"></span>
+                    <span class="mini-p mini-p--short"></span>
+                    <div class="mini-actions"><span class="mini-cta"></span><span class="mini-cta mini-cta--ghost"></span></div>
+                  </div>
+                  <div class="mini-cards"><i></i><i></i><i></i></div>
+                  <div class="mini-chart">
+                    <span style="--h:38%"></span><span style="--h:58%"></span>
+                    <span style="--h:44%"></span><span style="--h:76%"></span>
+                    <span style="--h:62%"></span><span style="--h:92%"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prompt-card">
+              <div class="prompt-card__head">
+                <span class="prompt-card__dot"></span>
+                <span>Claude Code</span>
+                <span class="prompt-card__time">42 сек</span>
+              </div>
+              <p class="prompt-card__line"><span>›</span> <span class="typing" id="typingText"></span><span class="caret"></span></p>
+              <div class="prompt-card__steps">
+                <span class="step is-done">✓ структура</span>
+                <span class="step is-done">✓ дизайн</span>
+                <span class="step is-active">● деплой</span>
+              </div>
+            </div>
+
+            <div class="float-chip float-chip--1"><span>⚡</span> 10 файлов за 42 сек</div>
+            <div class="float-chip float-chip--2"><span>✦</span> Lighthouse 98</div>
+
+            <div class="orbit" aria-hidden="true">
+              <svg viewBox="0 0 160 160">
+                <defs>
+                  <path id="circlePath" d="M 80,80 m -60,0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0"/>
+                </defs>
+                <text>
+                  <textPath href="#circlePath" startOffset="0%">VIBE CODING · WITHOUT FEAR · VIBE CODING ·</textPath>
+                </text>
+              </svg>
+              <span class="orbit__center">✳</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true"><span></span> листайте</div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__row marquee__row--fill">
+        <span>САЙТЫ</span><i>✳</i><span>СЕРВИСЫ</span><i>✳</i><span>БОТЫ</span><i>✳</i><span>АГЕНТЫ</span><i>✳</i><span>АВТОМАТИЗАЦИЯ</span><i>✳</i>
+        <span>САЙТЫ</span><i>✳</i><span>СЕРВИСЫ</span><i>✳</i><span>БОТЫ</span><i>✳</i><span>АГЕНТЫ</span><i>✳</i><span>АВТОМАТИЗАЦИЯ</span><i>✳</i>
+      </div>
+      <div class="marquee__row marquee__row--outline">
+        <span>БЕЗ КОДА</span><i>·</i><span>БЕЗ СТРАХА</span><i>·</i><span>БЕЗ ШАБЛОНОВ</span><i>·</i><span>БЕЗ КОДА</span><i>·</i><span>БЕЗ СТРАХА</span><i>·</i><span>БЕЗ ШАБЛОНОВ</span><i>·</i>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <section class="stats">
+      <div class="container stats__grid">
+        <div class="stat reveal">
+          <span class="stat__num" data-count="2400" data-suffix="+">0</span>
+          <span class="stat__label">студентов прошли курс</span>
+        </div>
+        <div class="stat reveal" data-delay="1">
+          <span class="stat__num" data-count="87" data-suffix="%">0</span>
+          <span class="stat__label">доходят до защиты проекта</span>
+        </div>
+        <div class="stat reveal" data-delay="2">
+          <span class="stat__num" data-count="4" data-suffix=",9">0</span>
+          <span class="stat__label">средняя оценка курса</span>
+        </div>
+        <div class="stat reveal" data-delay="3">
+          <span class="stat__num" data-count="10" data-suffix="+">0</span>
+          <span class="stat__label">работ в портфолио</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAINS -->
+    <section class="section pains" id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker reveal">Знакомо?</p>
+            <h2 class="h2 reveal" data-delay="1">Идея есть.<br><span class="muted">А продукта нет.</span></h2>
+          </div>
+          <p class="section-head__text reveal" data-delay="2">
+            Можно годами смотреть уроки, покупать домены и ждать «подходящего момента».
+            Или за один вечер собрать первую рабочую версию — и показать её людям.
+          </p>
+        </div>
+
+        <div class="pain-grid">
+          <article class="pain-card glow-card reveal">
+            <span class="pain-card__icon">✕</span>
+            <h3>«Учить код — это 2 года»</h3>
+            <p>Синтаксис, фреймворки, алгоритмы. Мотивация заканчивается на третьем уроке, а идея всё ждёт.</p>
+            <span class="pain-card__tag">хватит ждать</span>
+          </article>
+          <article class="pain-card glow-card reveal" data-delay="1">
+            <span class="pain-card__icon">✕</span>
+            <h3>«ИИ выдаёт какой-то хаос»</h3>
+            <p>Промпты не работают, код ломается, непонятно, что делать с ошибкой. В итоге — закрытый чат и удалённая папка.</p>
+            <span class="pain-card__tag">нужна система</span>
+          </article>
+          <article class="pain-card glow-card reveal" data-delay="2">
+            <span class="pain-card__icon">✕</span>
+            <h3>«Курсы учат не тому»</h3>
+            <p>Полгода теории, домашние задания ради галочки и сертификат, который не превращается в продукт.</p>
+            <span class="pain-card__tag">нужен результат</span>
+          </article>
+        </div>
+
+        <div class="bridge reveal">
+          <div class="bridge__glow" aria-hidden="true"></div>
+          <p class="bridge__label">Вайб-кодинг — это другое</p>
+          <p class="bridge__text">
+            Не «волшебная кнопка», а навык управлять ИИ:
+            ставить задачу, проверять результат, доводить до продукта.
+            <strong>Вы — режиссёр. Claude Code — ваша команда разработки.</strong>
+          </p>
+          <div class="bridge__chips">
+            <span>промпт</span><span>архитектура</span><span>проверка</span><span>деплой</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW -->
+    <section class="section how">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <div>
+            <p class="kicker reveal">Как это работает</p>
+            <h2 class="h2 reveal" data-delay="1">Три шага<br>до первого запуска</h2>
+          </div>
+        </div>
+
+        <div class="steps">
+          <div class="steps__line" aria-hidden="true"><span class="steps__line-fill" id="stepsLine"></span></div>
+          <article class="step-card reveal">
+            <span class="step-card__num">01</span>
+            <div class="step-card__icon">◎</div>
+            <h3>Опишите идею</h3>
+            <p>Обычными словами: что за продукт, для кого, что должно происходить. Без технических терминов.</p>
+            <span class="step-card__hint">«Сделай лендинг для кофейни с формой»</span>
+          </article>
+          <article class="step-card reveal" data-delay="1">
+            <span class="step-card__num">02</span>
+            <div class="step-card__icon">✳</div>
+            <h3>Claude Code собирает</h3>
+            <p>Сам создаёт файлы, пишет код, проверяет ошибки и показывает результат в браузере.</p>
+            <span class="step-card__hint">10 файлов · 42 секунды</span>
+          </article>
+          <article class="step-card reveal" data-delay="2">
+            <span class="step-card__num">03</span>
+            <div class="step-card__icon">↗</div>
+            <h3>Вы запускаете</h3>
+            <p>Публикуете на своём домене, показываете клиентам, добавляете правки — и улучшаете дальше.</p>
+            <span class="step-card__hint">live · ваш домен · ваша ссылка</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS BENTO -->
+    <section class="section skills">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker reveal">Что вы освоите</p>
+            <h2 class="h2 reveal" data-delay="1">Навык, который<br><span class="grad-text">остаётся с вами</span></h2>
+          </div>
+          <p class="section-head__text reveal" data-delay="2">
+            Не набор заученных действий, а понимание, как устроена разработка с ИИ.
+            Это работает не только на Claude Code.
+          </p>
+        </div>
+
+        <div class="bento">
+          <article class="bento-card bento-card--wide glow-card tilt reveal">
+            <div class="bento-card__top">
+              <span class="chip">сайты</span>
+              <span class="bento-card__num">01</span>
+            </div>
+            <h3>Сайты, которые<br>хочется открыть</h3>
+            <p>От структуры и текста до анимаций и адаптива. Claude Code собирает лендинг, а вы отвечаете за смысл и дизайн.</p>
+            <div class="demo-site" aria-hidden="true">
+              <div class="demo-site__bar"><i></i><i></i><i></i><span></span></div>
+              <div class="demo-site__body">
+                <div class="demo-site__hero">
+                  <span class="demo-site__eyebrow"></span>
+                  <span class="demo-site__h"></span>
+                  <span class="demo-site__h demo-site__h--2"></span>
+                  <span class="demo-site__btn"></span>
+                </div>
+                <div class="demo-site__cards"><i></i><i></i><i></i></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bento-card glow-card tilt reveal" data-delay="1">
+            <div class="bento-card__top"><span class="chip chip--cyan">сервисы</span><span class="bento-card__num">02</span></div>
+            <h3>Mini-SaaS<br>и инструменты</h3>
+            <p>Личный трекер, калькулятор, генератор контента — с формами, данными и логикой.</p>
+            <div class="demo-app" aria-hidden="true">
+              <div class="demo-app__row"><span></span><i></i></div>
+              <div class="demo-app__row"><span></span><i></i></div>
+              <div class="demo-app__row"><span></span><i></i></div>
+              <div class="demo-app__meter"><b style="--w:82%"></b></div>
+            </div>
+          </article>
+
+          <article class="bento-card glow-card tilt reveal" data-delay="2">
+            <div class="bento-card__top"><span class="chip chip--pink">агенты</span><span class="bento-card__num">03</span></div>
+            <h3>ИИ-агенты<br>и автоматизация</h3>
+            <p>Агент, который сам собирает данные, отвечает клиентам и раскладывает задачи по полочкам.</p>
+            <div class="demo-agents" aria-hidden="true">
+              <span class="demo-agents__node">research</span>
+              <span class="demo-agents__node demo-agents__node--mid">coder</span>
+              <span class="demo-agents__node">qa</span>
+              <div class="demo-agents__pulse"></div>
+            </div>
+          </article>
+
+          <article class="bento-card bento-card--tall glow-card tilt reveal" data-delay="1">
+            <div class="bento-card__top"><span class="chip chip--mint">деплой</span><span class="bento-card__num">04</span></div>
+            <h3>От localhost<br>до интернета</h3>
+            <p>Домен, сервер, SSL, GitHub. Ваш проект открывается по ссылке, которой можно поделиться.</p>
+            <div class="terminal" aria-hidden="true">
+              <div class="terminal__head"><i></i><i></i><i></i><span>deploy.sh</span></div>
+              <pre><span class="t-muted">$</span> git push origin main
+<span class="t-ok">✓</span> build passed
+<span class="t-muted">$</span> deploy --prod
+<span class="t-cyan">→</span> https://your.site
+<span class="t-ok">✓</span> live in 18s<span class="t-caret"></span></pre>
+            </div>
+          </article>
+
+          <article class="bento-card bento-card--wide2 glow-card tilt reveal" data-delay="2">
+            <div class="bento-card__top"><span class="chip chip--violet">навык</span><span class="bento-card__num">05</span></div>
+            <div class="bento-card__split">
+              <div>
+                <h3>Умение думать<br>как архитектор</h3>
+                <p>Разбивать задачу на шаги, проверять безопасность, тестировать и доводить до 100% рабочего состояния. Это и есть главный навык.</p>
+              </div>
+              <div class="rings" aria-hidden="true">
+                <span class="ring ring--1"></span>
+                <span class="ring ring--2"></span>
+                <span class="ring ring--3"></span>
+                <span class="rings__core">AI</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section projects" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker reveal">Портфолио</p>
+            <h2 class="h2 reveal" data-delay="1">10+ проектов,<br>которыми можно<br><span class="grad-text">гордиться</span></h2>
+          </div>
+          <p class="section-head__text reveal" data-delay="2">
+            Каждый модуль заканчивается рабочим продуктом. Не «домашкой для галочки» —
+            а ссылкой, которую не стыдно отправить клиенту или другу.
+          </p>
+        </div>
+
+        <div class="showcase reveal">
+          <div class="showcase__tabs" role="tablist" aria-label="Категории проектов">
+            <button class="showcase__tab is-active" role="tab" aria-selected="true" aria-controls="panel-sites" id="tab-sites" type="button" data-tab="sites">Сайты</button>
+            <button class="showcase__tab" role="tab" aria-selected="false" aria-controls="panel-apps" id="tab-apps" type="button" data-tab="apps">Сервисы</button>
+            <button class="showcase__tab" role="tab" aria-selected="false" aria-controls="panel-bots" id="tab-bots" type="button" data-tab="bots">Боты</button>
+            <button class="showcase__tab" role="tab" aria-selected="false" aria-controls="panel-agents" id="tab-agents" type="button" data-tab="agents">Агенты</button>
+          </div>
+
+          <div class="showcase__stage">
+            <div class="showcase__panel is-active" id="panel-sites" role="tabpanel" aria-labelledby="tab-sites">
+              <div class="showcase__info">
+                <span class="showcase__count">проект 01 / 11</span>
+                <h3>Лендинг для студии йоги</h3>
+                <p>Структура, тексты, формы записи, анимации и адаптив. Собирается за один вечер — и сразу публикуется на домене.</p>
+                <ul class="showcase__list">
+                  <li>Дизайн под вашу аудиторию</li>
+                  <li>Адаптив для телефона</li>
+                  <li>Форма заявки и аналитика</li>
+                </ul>
+                <div class="showcase__tags"><span>HTML/CSS</span><span>JS</span><span>Deploy</span></div>
+              </div>
+              <div class="mock mock--sites" aria-hidden="true">
+                <div class="mock__chrome"><i></i><i></i><i></i><span>yoga.studio</span></div>
+                <div class="mock__page">
+                  <div class="mock__nav"><b>calm.</b><span></span><span></span><span class="mock__btn"></span></div>
+                  <div class="mock__hero">
+                    <span class="mock__eyebrow">йога · дыхание · баланс</span>
+                    <span class="mock__title"></span>
+                    <span class="mock__title mock__title--2"></span>
+                    <span class="mock__text"></span>
+                    <span class="mock__cta"></span>
+                  </div>
+                  <div class="mock__cards"><i></i><i></i><i></i></div>
+                </div>
+                <span class="mock__badge">Lighthouse 97</span>
+              </div>
+            </div>
+
+            <div class="showcase__panel" id="panel-apps" role="tabpanel" aria-labelledby="tab-apps">
+              <div class="showcase__info">
+                <span class="showcase__count">проект 04 / 11</span>
+                <h3>Трекер привычек</h3>
+                <p>Мини-сервис с авторизацией, сохранением данных и понятной статистикой. Работает в браузере и на телефоне.</p>
+                <ul class="showcase__list">
+                  <li>Формы и локальная база</li>
+                  <li>Графики прогресса</li>
+                  <li>Тёмная и светлая темы</li>
+                </ul>
+                <div class="showcase__tags"><span>JS</span><span>API</span><span>UI</span></div>
+              </div>
+              <div class="mock mock--apps" aria-hidden="true">
+                <div class="mock__chrome"><i></i><i></i><i></i><span>habit.app</span></div>
+                <div class="app">
+                  <div class="app__head"><b>Сегодня</b><span>5 из 7</span></div>
+                  <div class="app__ring"><span>71%</span></div>
+                  <div class="app__rows">
+                    <div class="app__row"><i class="app__check"></i><span>Чтение 20 минут</span><em>+2</em></div>
+                    <div class="app__row"><i class="app__check"></i><span>Прогулка</span><em>+1</em></div>
+                    <div class="app__row"><i class="app__check app__check--off"></i><span>Вода</span><em>+1</em></div>
+                  </div>
+                  <div class="app__chart"><i style="--h:40%"></i><i style="--h:66%"></i><i style="--h:52%"></i><i style="--h:84%"></i><i style="--h:72%"></i><i style="--h:94%"></i><i style="--h:100%"></i></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase__panel" id="panel-bots" role="tabpanel" aria-labelledby="tab-bots">
+              <div class="showcase__info">
+                <span class="showcase__count">проект 07 / 11</span>
+                <h3>Telegram-бот записи</h3>
+                <p>Бот принимает заявки, показывает свободные окна и отправляет подтверждение. Подключается к вашему календарю.</p>
+                <ul class="showcase__list">
+                  <li>Сценарии и кнопки</li>
+                  <li>База клиентов</li>
+                  <li>Уведомления в Telegram</li>
+                </ul>
+                <div class="showcase__tags"><span>Python</span><span>Bot API</span><span>SQLite</span></div>
+              </div>
+              <div class="mock mock--bots" aria-hidden="true">
+                <div class="mock__chrome"><i></i><i></i><i></i><span>@booking_bot</span></div>
+                <div class="chat">
+                  <div class="chat__msg chat__msg--in">Привет! На какое время вас записать?</div>
+                  <div class="chat__chips"><span>12:00</span><span>15:30</span><span>18:00</span></div>
+                  <div class="chat__msg chat__msg--out">15:30 подойдёт</div>
+                  <div class="chat__msg chat__msg--in">Готово ✓<br>Ждём вас завтра в 15:30</div>
+                  <div class="chat__typing"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase__panel" id="panel-agents" role="tabpanel" aria-labelledby="tab-agents">
+              <div class="showcase__info">
+                <span class="showcase__count">проект 10 / 11</span>
+                <h3>Агент-исследователь</h3>
+                <p>Сам обходит сайты, собирает данные и присылает отчёт. Пример: мониторинг конкурентов или подбор вакансий.</p>
+                <ul class="showcase__list">
+                  <li>MCP и внешние инструменты</li>
+                  <li>Парсинг и структура данных</li>
+                  <li>Отчёт в таблице или Telegram</li>
+                </ul>
+                <div class="showcase__tags"><span>Agents</span><span>MCP</span><span>Automation</span></div>
+              </div>
+              <div class="mock mock--agents" aria-hidden="true">
+                <div class="mock__chrome"><i></i><i></i><i></i><span>agent.run</span></div>
+                <div class="agent-run">
+                  <div class="agent-run__head"><span class="agent-run__dot"></span> исследование запущено <em>00:42</em></div>
+                  <div class="agent-run__log">
+                    <p><span>01</span> открываю источники <b>12 сайтов</b></p>
+                    <p><span>02</span> собираю цены и условия</p>
+                    <p><span>03</span> чищу дубликаты</p>
+                    <p class="is-active"><span>04</span> формирую отчёт <i></i></p>
+                  </div>
+                  <div class="agent-run__result"><span>✓</span> готово: <b>48 строк</b> · <b>3 инсайта</b></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="projects__foot reveal">
+          <p>Плюс финальный проект под вашу личную задачу — с защитой и обратной связью куратора.</p>
+          <a class="btn btn--outline" href="#program">Посмотреть программу</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAM -->
+    <section class="section program" id="program">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker reveal">Программа</p>
+            <h2 class="h2 reveal" data-delay="1">4 недели.<br>12 уроков.<br><span class="grad-text">1 новый навык.</span></h2>
+          </div>
+          <p class="section-head__text reveal" data-delay="2">
+            Каждую неделю — новая ступень: от первого запуска до собственного агента.
+            Всё сразу применяете в проекте, а не конспектируете «на будущее».
+          </p>
+        </div>
+
+        <div class="weeks">
+          <article class="week reveal">
+            <div class="week__head">
+              <span class="week__num">01</span>
+              <div>
+                <span class="week__label">Неделя 1</span>
+                <h3>Первый запуск</h3>
+              </div>
+              <span class="week__time">3–4 часа</span>
+            </div>
+            <p class="week__goal">Цель: настроить среду и собрать первый сайт, который открывается в браузере.</p>
+            <ul class="week__lessons">
+              <li><span>01</span> Claude Code: установка, терминал, первый запуск</li>
+              <li><span>02</span> Промптинг и CLAUDE.md: как ставить задачи</li>
+              <li><span>03</span> Собираем лендинг и запускаем локально</li>
+            </ul>
+            <div class="week__result"><span>Результат</span> рабочий лендинг + настроенная среда</div>
+          </article>
+
+          <article class="week reveal" data-delay="1">
+            <div class="week__head">
+              <span class="week__num">02</span>
+              <div>
+                <span class="week__label">Неделя 2</span>
+                <h3>Сервисы и данные</h3>
+              </div>
+              <span class="week__time">3–4 часа</span>
+            </div>
+            <p class="week__goal">Цель: добавить логику, формы и работу с данными — превратить сайт в сервис.</p>
+            <ul class="week__lessons">
+              <li><span>04</span> Архитектура приложения и работа с файлами</li>
+              <li><span>05</span> Формы, состояния, локальная база</li>
+              <li><span>06</span> API и подключение внешних сервисов</li>
+            </ul>
+            <div class="week__result"><span>Результат</span> мини-сервис с работающей логикой</div>
+          </article>
+
+          <article class="week reveal" data-delay="2">
+            <div class="week__head">
+              <span class="week__num">03</span>
+              <div>
+                <span class="week__label">Неделя 3</span>
+                <h3>Агенты и автоматизация</h3>
+              </div>
+              <span class="week__time">3–4 часа</span>
+            </div>
+            <p class="week__goal">Цель: научить ИИ делать работу за вас — собирать, проверять и публиковать данные.</p>
+            <ul class="week__lessons">
+              <li><span>07</span> MCP: подключаем внешние инструменты</li>
+              <li><span>08</span> Skills: усиливаем агента под задачу</li>
+              <li><span>09</span> Контент-завод и мультиагентные сценарии</li>
+            </ul>
+            <div class="week__result"><span>Результат</span> агент, который выполняет цепочку задач</div>
+          </article>
+
+          <article class="week reveal" data-delay="3">
+            <div class="week__head">
+              <span class="week__num">04</span>
+              <div>
+                <span class="week__label">Неделя 4</span>
+                <h3>Деплой и продукт</h3>
+              </div>
+              <span class="week__time">3–4 часа</span>
+            </div>
+            <p class="week__goal">Цель: вывести проект в интернет и упаковать навык в услугу или собственный продукт.</p>
+            <ul class="week__lessons">
+              <li><span>10</span> Сервер, домен, SSL и безопасность</li>
+              <li><span>11</span> GitHub и Docker для развёртывания</li>
+              <li><span>12</span> Монетизация и финальный проект</li>
+            </ul>
+            <div class="week__result"><span>Результат</span> живой продукт по ссылке + портфолио</div>
+          </article>
+        </div>
+
+        <div class="program__aside reveal">
+          <div class="program__stat"><b>2</b><span>живые встречи<br>с экспертами</span></div>
+          <div class="program__stat"><b>12</b><span>практических<br>уроков</span></div>
+          <div class="program__stat"><b>∞</b><span>доступ к записям<br>и обновлениям</span></div>
+          <a class="btn btn--glow magnetic" href="#join">Хочу учиться</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUDIENCE -->
+    <section class="section audience">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <div>
+            <p class="kicker reveal">Кому подойдёт</p>
+            <h2 class="h2 reveal" data-delay="1">Вы точно<br>на своём месте, если</h2>
+          </div>
+        </div>
+        <div class="audience__grid">
+          <article class="audience-card glow-card reveal">
+            <span class="audience-card__emoji">✦</span>
+            <h3>Новичок</h3>
+            <p>Никогда не писали код, но хотите делать сайты и сервисы своими руками.</p>
+            <span class="audience-card__line"></span>
+          </article>
+          <article class="audience-card glow-card reveal" data-delay="1">
+            <span class="audience-card__emoji">◐</span>
+            <h3>Дизайнер</h3>
+            <p>Устали отдавать макеты «в разработку» и ждать неделями. Соберите сами.</p>
+            <span class="audience-card__line"></span>
+          </article>
+          <article class="audience-card glow-card reveal" data-delay="2">
+            <span class="audience-card__emoji">◈</span>
+            <h3>Маркетолог</h3>
+            <p>Нужны быстрые лендинги, воронки и инструменты без бюджета на подрядчиков.</p>
+            <span class="audience-card__line"></span>
+          </article>
+          <article class="audience-card glow-card reveal" data-delay="3">
+            <span class="audience-card__emoji">◆</span>
+            <h3>Предприниматель</h3>
+            <p>Хотите проверить гипотезу и запустить MVP за выходные, а не за квартал.</p>
+            <span class="audience-card__line"></span>
+          </article>
+          <article class="audience-card glow-card reveal" data-delay="4">
+            <span class="audience-card__emoji">◎</span>
+            <h3>Специалист</h3>
+            <p>Мечтаете об инструменте под свою рутину — и не хотите зависеть от IT-отдела.</p>
+            <span class="audience-card__line"></span>
+          </article>
+        </div>
+        <p class="audience__note reveal">Не нужен технический бэкграунд. Нужны идея, ноутбук и 3–4 часа в неделю.</p>
+      </div>
+    </section>
+
+    <!-- MENTORS -->
+    <section class="section mentors">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker reveal">Команда</p>
+            <h2 class="h2 reveal" data-delay="1">Вас ведут<br>практики</h2>
+          </div>
+          <p class="section-head__text reveal" data-delay="2">
+            Не теоретики с презентациями, а люди, которые каждый день собирают продукты
+            с помощью ИИ и заражают этим остальных.
+          </p>
+        </div>
+        <div class="mentors__grid">
+          <article class="mentor glow-card reveal">
+            <div class="mentor__orb mentor__orb--a" aria-hidden="true"><span>ДГ</span></div>
+            <div class="mentor__body">
+              <span class="mentor__role">Ведущий курса · AI-практик</span>
+              <h3>Даниил Гаврилов</h3>
+              <p>Автор канала «Продуктивный совет» — 56 000+ подписчиков. Делает автоматизации для бизнеса и объясняет ИИ без снобизма.</p>
+              <div class="mentor__tags"><span>Claude Code</span><span>автоматизация</span><span>агенты</span></div>
+            </div>
+          </article>
+          <article class="mentor glow-card reveal" data-delay="1">
+            <div class="mentor__orb mentor__orb--b" aria-hidden="true"><span>КЗ</span></div>
+            <div class="mentor__body">
+              <span class="mentor__role">Методист · продукт</span>
+              <h3>Ксения Зайцева</h3>
+              <p>10+ лет в образовании, 8 000+ студентов. Собирает программы так, чтобы до результата доходили даже те, кто «не технарь».</p>
+              <div class="mentor__tags"><span>методология</span><span>продукт</span><span>поддержка</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="section reviews" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker reveal">Отзывы</p>
+            <h2 class="h2 reveal" data-delay="1">Они уже<br>запустились</h2>
+          </div>
+          <div class="reviews__nav reveal" data-delay="2">
+            <button class="round-btn" id="reviewsPrev" type="button" aria-label="Предыдущий отзыв">←</button>
+            <button class="round-btn" id="reviewsNext" type="button" aria-label="Следующий отзыв">→</button>
+          </div>
+        </div>
+
+        <div class="reviews__track" id="reviewsTrack">
+          <article class="review glow-card">
+            <div class="review__top"><span class="stars">★★★★★</span><span class="review__project">yoga.studio</span></div>
+            <p>«Я дизайнер и всегда боялась терминала. Через две недели сама собрала сайт для клиента и сдала его без разработчика. Это было странное и очень крутое чувство».</p>
+            <div class="review__author"><span class="avatar avatar--1">А</span><div><b>Анна К.</b><span>дизайнер · Москва</span></div></div>
+          </article>
+          <article class="review glow-card">
+            <div class="review__top"><span class="stars">★★★★★</span><span class="review__project">habit.app</span></div>
+            <p>«Самое ценное — перестал бояться ошибок. Claude Code показывает, что сломалось, а ты учишься это чинить. Сейчас делаю внутренние сервисы для своей команды».</p>
+            <div class="review__author"><span class="avatar avatar--2">М</span><div><b>Максим Р.</b><span>продакт · Санкт-Петербург</span></div></div>
+          </article>
+          <article class="review glow-card">
+            <div class="review__top"><span class="stars">★★★★★</span><span class="review__project">@booking_bot</span></div>
+            <p>«Пришла с идеей бота для салона. На финальном проекте собрала его целиком: запись, напоминания, оплата. Уже обсудили внедрение с двумя клиентами».</p>
+            <div class="review__author"><span class="avatar avatar--3">К</span><div><b>Карина С.</b><span>маркетолог · Казань</span></div></div>
+          </article>
+          <article class="review glow-card">
+            <div class="review__top"><span class="stars">★★★★★</span><span class="review__project">agent.run</span></div>
+            <p>«Курс не про кнопки, а про мышление. Теперь я понимаю, как разбить задачу и что проверять после ИИ. Агент для мониторинга конкурентов работает каждый день».</p>
+            <div class="review__author"><span class="avatar avatar--4">Д</span><div><b>Дмитрий Л.</b><span>предприниматель · Москва</span></div></div>
+          </article>
+          <article class="review glow-card">
+            <div class="review__top"><span class="stars">★★★★★</span><span class="review__project">coffee.studio</span></div>
+            <p>«Брала курс, чтобы сделать сайт для своей кофейни. В итоге сделала еще три лендинга подряд для знакомых. Вложения окупились до конца обучения».</p>
+            <div class="review__author"><span class="avatar avatar--2">О</span><div><b>Ольга В.</b><span>владелица бизнеса · Сочи</span></div></div>
+          </article>
+        </div>
+
+        <div class="reviews__dots" id="reviewsDots" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section pricing" id="pricing">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <div>
+            <p class="kicker reveal">Тарифы</p>
+            <h2 class="h2 reveal" data-delay="1">Выберите<br>свой формат</h2>
+            <p class="section-head__text section-head__text--center reveal" data-delay="2">
+              Один поток — три уровня поддержки. Оплата сразу или в рассрочку на 24 месяца.
+            </p>
+          </div>
+        </div>
+
+        <div class="billing reveal" role="group" aria-label="Способ оплаты">
+          <button class="billing__btn is-active" type="button" data-billing="full" aria-pressed="true">Оплатить сразу</button>
+          <button class="billing__btn" type="button" data-billing="month" aria-pressed="false">В рассрочку</button>
+          <span class="billing__hint">−45% до конца набора</span>
+        </div>
+
+        <div class="plans">
+          <article class="plan glow-card reveal">
+            <div class="plan__head">
+              <span class="plan__name">Solo</span>
+              <p>Самостоятельный маршрут</p>
+            </div>
+            <div class="plan__price">
+              <span class="plan__old">44 900 ₽</span>
+              <span class="plan__now" data-full="19 900 ₽" data-month="829 ₽/мес">19 900 ₽</span>
+              <span class="plan__note" data-full="или 829 ₽/мес × 24" data-month="24 месяца без переплат">или 829 ₽/мес × 24</span>
+            </div>
+            <ul class="plan__list">
+              <li>12 уроков + 2 бонуса</li>
+              <li>10+ практических проектов</li>
+              <li>Проверка заданий куратором</li>
+              <li>Доступ к записям 6 месяцев</li>
+              <li>Сертификат</li>
+            </ul>
+            <a class="btn btn--outline btn--block" href="#join" data-plan="Solo">Выбрать Solo</a>
+          </article>
+
+          <article class="plan plan--popular reveal" data-delay="1">
+            <span class="plan__badge">Выбор 78% студентов</span>
+            <div class="plan__head">
+              <span class="plan__name">Pro</span>
+              <p>Лучший баланс поддержки</p>
+            </div>
+            <div class="plan__price">
+              <span class="plan__old">69 000 ₽</span>
+              <span class="plan__now" data-full="34 900 ₽" data-month="1 454 ₽/мес">34 900 ₽</span>
+              <span class="plan__note" data-full="или 1 454 ₽/мес × 24" data-month="24 месяца без переплат">или 1 454 ₽/мес × 24</span>
+            </div>
+            <ul class="plan__list">
+              <li>Всё из Solo</li>
+              <li>Доступ к записям навсегда</li>
+              <li>Чат потока и поддержка 3 месяца</li>
+              <li>2 консультации с куратором</li>
+              <li>Разбор финального проекта</li>
+              <li>Помощь с деплоем</li>
+            </ul>
+            <a class="btn btn--glow btn--block" href="#join" data-plan="Pro">Выбрать Pro</a>
+          </article>
+
+          <article class="plan glow-card reveal" data-delay="2">
+            <div class="plan__head">
+              <span class="plan__name">VIP</span>
+              <p>Личное сопровождение</p>
+            </div>
+            <div class="plan__price">
+              <span class="plan__old">129 000 ₽</span>
+              <span class="plan__now" data-full="59 900 ₽" data-month="2 495 ₽/мес">59 900 ₽</span>
+              <span class="plan__note" data-full="или 2 495 ₽/мес × 24" data-month="24 месяца без переплат">или 2 495 ₽/мес × 24</span>
+            </div>
+            <ul class="plan__list">
+              <li>Всё из Pro</li>
+              <li>4 личные сессии с ментором</li>
+              <li>Сопровождение вашего проекта</li>
+              <li>Помощь с первым клиентом</li>
+              <li>Доступ в закрытый клуб</li>
+            </ul>
+            <a class="btn btn--outline btn--block" href="#join" data-plan="VIP">Выбрать VIP</a>
+          </article>
+        </div>
+
+        <div class="pricing__foot reveal">
+          <div class="guarantee">
+            <span class="guarantee__icon">↺</span>
+            <p><b>14 дней на возврат.</b> Если поймёте, что формат не ваш — вернём деньги без вопросов.</p>
+          </div>
+          <div class="guarantee">
+            <span class="guarantee__icon">🔒</span>
+            <p><b>Безопасная оплата.</b> Договор, чек и доступ сразу после оплаты.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq">
+      <div class="container faq__grid">
+        <div class="faq__head">
+          <p class="kicker reveal">FAQ</p>
+          <h2 class="h2 reveal" data-delay="1">Остались<br>вопросы?</h2>
+          <p class="reveal" data-delay="2">Собрали то, что спрашивают чаще всего. Если вашего вопроса нет — напишите нам, ответим лично.</p>
+          <a class="btn btn--outline" href="#join">Задать вопрос</a>
+        </div>
+
+        <div class="accordion" id="faqAccordion">
+          <article class="acc acc--open">
+            <button class="acc__head" type="button" aria-expanded="true">
+              <span>Совсем нет опыта. Не будет слишком сложно?</span>
+              <i class="acc__icon" aria-hidden="true"></i>
+            </button>
+            <div class="acc__panel"><div class="acc__body">
+              <p>Курс стартует с нуля: установка, терминал, первая команда. Мы не учим программировать — мы учим ставить задачу ИИ и проверять результат. Если что-то непонятно, куратор и чат помогают разобраться.</p>
+            </div></div>
+          </article>
+          <article class="acc">
+            <button class="acc__head" type="button" aria-expanded="false">
+              <span>Claude Code платный? Сколько это стоит?</span>
+              <i class="acc__icon" aria-hidden="true"></i>
+            </button>
+            <div class="acc__panel"><div class="acc__body">
+              <p>Да, нужна подписка Claude — от $20 в месяц. На курсе показываем, как оформить доступ из России и какие есть альтернативы, включая локальные модели. Подписка не входит в стоимость курса.</p>
+            </div></div>
+          </article>
+          <article class="acc">
+            <button class="acc__head" type="button" aria-expanded="false">
+              <span>Сколько времени нужно в неделю?</span>
+              <i class="acc__icon" aria-hidden="true"></i>
+            </button>
+            <div class="acc__panel"><div class="acc__body">
+              <p>3–4 часа: короткие уроки по 15–25 минут и практика. Можно заниматься вечером или в выходные. Доступ к записям остаётся, поэтому темп можно подстроить под себя.</p>
+            </div></div>
+          </article>
+          <article class="acc">
+            <button class="acc__head" type="button" aria-expanded="false">
+              <span>Какие проекты я соберу?</span>
+              <i class="acc__icon" aria-hidden="true"></i>
+            </button>
+            <div class="acc__panel"><div class="acc__body">
+              <p>Лендинги, мини-сервисы, Telegram-бота, парсер, контент-завод, агента-исследователя и финальный проект под вашу задачу. Всего 10+ работ — от простых до мультиагентных систем.</p>
+            </div></div>
+          </article>
+          <article class="acc">
+            <button class="acc__head" type="button" aria-expanded="false">
+              <span>Поможете ли с первым клиентом?</span>
+              <i class="acc__icon" aria-hidden="true"></i>
+            </button>
+            <div class="acc__panel"><div class="acc__body">
+              <p>На тарифах Pro и VIP разбираем упаковку услуги, портфолио и первые шаги к заказам. На VIP — личные сессии и помощь с конкретным проектом. Гарантии дохода мы не даём: результат зависит от вашей активности.</p>
+            </div></div>
+          </article>
+          <article class="acc">
+            <button class="acc__head" type="button" aria-expanded="false">
+              <span>Есть ли рассрочка и возврат?</span>
+              <i class="acc__icon" aria-hidden="true"></i>
+            </button>
+            <div class="acc__panel"><div class="acc__body">
+              <p>Да, доступна рассрочка на 24 месяца без переплат. И действует гарантия возврата 14 дней с момента старта: если формат не подошёл — возвращаем оплату.</p>
+            </div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOIN -->
+    <section class="join" id="join">
+      <div class="container">
+        <div class="join__card reveal">
+          <div class="join__glow" aria-hidden="true"></div>
+          <div class="join__content">
+            <div class="badge badge--light"><span class="badge__pulse"></span> Набор на поток #7 открыт</div>
+            <h2 class="h2">Через 4 недели<br>у вас будет <span class="grad-text">свой продукт</span></h2>
+            <p>Оставьте заявку — менеджер свяжется в течение 15 минут, ответит на вопросы и закрепит за вами место.</p>
+
+            <div class="countdown" id="countdown" aria-label="До конца набора">
+              <div class="countdown__cell"><b id="cdDays">00</b><span>дней</span></div>
+              <div class="countdown__cell"><b id="cdHours">00</b><span>часов</span></div>
+              <div class="countdown__cell"><b id="cdMinutes">00</b><span>минут</span></div>
+              <div class="countdown__cell"><b id="cdSeconds">00</b><span>секунд</span></div>
+            </div>
+
+            <ul class="join__points">
+              <li>Старт 12 ноября</li>
+              <li>12 мест в потоке</li>
+              <li>Возврат 14 дней</li>
+            </ul>
+          </div>
+
+          <form class="join__form" id="joinForm" novalidate>
+            <h3>Забронировать место</h3>
+            <div class="field">
+              <label for="name">Как вас зовут?</label>
+              <input id="name" name="name" type="text" placeholder="Имя" autocomplete="name" required>
+              <em class="field__error">Введите имя</em>
+            </div>
+            <div class="field">
+              <label for="contact">Телефон или Telegram</label>
+              <input id="contact" name="contact" type="text" placeholder="+7 999 123-45-67" autocomplete="tel" required>
+              <em class="field__error">Введите телефон или @username</em>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+              <em class="field__error">Проверьте email</em>
+            </div>
+            <div class="field">
+              <label for="plan">Тариф</label>
+              <select id="plan" name="plan">
+                <option value="Solo">Solo — 19 900 ₽</option>
+                <option value="Pro" selected>Pro — 34 900 ₽</option>
+                <option value="VIP">VIP — 59 900 ₽</option>
+                <option value="Не определился">Пока не определился</option>
+              </select>
+            </div>
+            <label class="consent">
+              <input type="checkbox" name="consent" required>
+              <span>Согласен с <a href="#" onclick="return false">политикой конфиденциальности</a> и обработкой данных</span>
+              <em class="field__error">Нужно согласие</em>
+            </label>
+            <button class="btn btn--glow btn--block btn--lg magnetic" type="submit">Забронировать место</button>
+            <p class="join__form-note">Это не оплата. Сначала познакомимся и ответим на вопросы.</p>
+          </form>
+
+          <div class="join__success" id="joinSuccess" hidden aria-live="polite">
+            <span class="join__success-icon">✓</span>
+            <h3>Место почти ваше!</h3>
+            <p>Заявка отправлена. Менеджер напишет вам в течение 15 минут в рабочее время и пришлёт детали потока.</p>
+            <button class="btn btn--outline" type="button" id="joinAgain">Отправить ещё одну</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a class="logo logo--footer" href="#top" aria-label="vibe.school — на главную">
+            <span class="logo__mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <path d="M16 2v28M2 16h28M6 6l20 20M26 6 6 26" stroke="url(#logoGradF)" stroke-width="3.2" stroke-linecap="round"/>
+                <defs>
+                  <linearGradient id="logoGradF" x1="2" y1="2" x2="30" y2="30">
+                    <stop stop-color="#a78bfa"/><stop offset=".5" stop-color="#22d3ee"/><stop offset="1" stop-color="#f472b6"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </span>
+            <span class="logo__text">vibe<span class="logo__dot">.</span>school</span>
+          </a>
+          <p>Учим делать продукты с ИИ —<br>без страха перед кодом.</p>
+          <div class="footer__socials">
+            <a href="#" onclick="return false" aria-label="Telegram — TG">TG</a>
+            <a href="#" onclick="return false" aria-label="YouTube — YT">YT</a>
+            <a href="#" onclick="return false" aria-label="VK — VK">VK</a>
+          </div>
+        </div>
+
+        <div class="footer__nav">
+          <div>
+            <h4>Курс</h4>
+            <a href="#program">Программа</a>
+            <a href="#projects">Проекты</a>
+            <a href="#pricing">Тарифы</a>
+            <a href="#reviews">Отзывы</a>
+          </div>
+          <div>
+            <h4>Помощь</h4>
+            <a href="#faq">FAQ</a>
+            <a href="#join">Связаться</a>
+            <a href="#" onclick="return false">Политика конфиденциальности</a>
+            <a href="#" onclick="return false">Оферта</a>
+          </div>
+          <div>
+            <h4>Контакты</h4>
+            <a href="mailto:hello@vibe.school">hello@vibe.school</a>
+            <a href="tel:+79990000000">+7 (999) 000-00-00</a>
+            <p class="footer__address">Онлайн · учимся из любой точки мира</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__big" aria-hidden="true">vibe.school</div>
+
+      <div class="footer__bottom">
+        <p>© 2026 vibe.school. Все права защищены.</p>
+        <p>ИП Вайбова В. В. · ИНН 000000000000</p>
+        <p class="footer__demo">Демо-лендинг · создан с помощью ИИ</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
